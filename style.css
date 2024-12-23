@@ -1,0 +1,234 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0782D4;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    /*display: flex;*/
+    align-items: center;
+}
+
+.logo {
+    height: 350px;
+    margin-right: 15px;
+}
+
+.site-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Affichage de l'heure */
+.time-container {
+    display: flex;
+    justify-content: center; /* Centrer l'heure */
+    flex-grow: 1;
+}
+
+.current-time {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: white;
+    opacity: 0.5; /* Opacité à 50% */
+    font-weight: bold;
+    background-color: #0782D4;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Navigation */
+.site-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav ul li {
+    margin: 0 15px;
+}
+
+.site-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.site-nav ul li a:hover {
+    color: #FFD700; /* Couleur or pour hover */
+}
+
+/* Barre de recherche */
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease; /* Animation fluide */
+    width: 100%; /* Toujours pleine largeur */
+    box-shadow: none; /* Supprimer l'ombre pour la barre seule */
+}
+
+/* Barre de recherche centrée ou en haut */
+.search-section.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.search-section.top {
+    margin: 20px 0;
+}
+
+/* Style des entrées de recherche */
+.search-input {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #0782D4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #FFD700;
+}
+
+/* Conteneur de résultats (cartes) */
+.results-container {
+    padding: 20px; /* Ajout d'espace entre la barre de recherche et les cartes */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 280px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background-color: #f0f0f0; /* Changer la couleur de fond au survol */
+}
+
+.card-header {
+    background-color: #0782D4;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.card-body {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.card-body .highlight {
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Centrer le bouton */
+}
+
+.map-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0782D4;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+    background-color: #FFD700;
+}
+
+/* Animation de survol pour les cartes */
+.card:hover {
+    transform: scale(1.05); /* Agrandir légèrement la carte */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+/* Style pour masquer/afficher le logo */
+.logo-container.hidden {
+    display: none;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+}
+
+/* Conteneur des boutons de secteur */
+.sector-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Boutons individuels */
+.sector-button {
+    padding: 15px 30px;
+    background-color: #0782D4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sector-button:hover {
+    background-color: #FFD700;
+}
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trucky - Suivi des camions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Fonction pour afficher l'heure
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            document.getElementById('current-time').textContent = timeString;
+        }
+        setInterval(updateTime, 1000); // Mettre à jour l'heure toutes les secondes
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav">
+            <ul>
+                <li><a href="/">Accueil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='BHR.png') }}" alt="Logo Trucky" class="logo">
+    </div>
+
+    <!-- Barre de recherche -->
+    <section class="search-section center">
+        <form method="get" action="/search">
+            <input type="text" name="query" placeholder="Rechercher un camion" class="search-input" value="{{ request.args.get('query', '') }}">
+            <button type="submit" class="search-button">Rechercher</button>
+        </form>
+    </section>
+
+    <!-- Boutons des secteurs -->
+    <div class="sector-buttons">
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Rennes Aglo">
+            <button type="submit" class="sector-button">Rennes Aglo</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Dompierre">
+            <button type="submit" class="sector-button">Dompierre</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="NANTES">
+            <button type="submit" class="sector-button">Nantes</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Pompe">
+            <button type="submit" class="sector-button">Pompe</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Emeraude">
+            <button type="submit" class="sector-button">Emeraude</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Armor">
+            <button type="submit" class="sector-button">Armor</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Morbihan">
+            <button type="submit" class="sector-button">Morbihan</button>
+        </form>
+        <form method="get" action="/search">
+            <input type="hidden" name="Secteur" value="Pumi">
+            <button type="submit" class="sector-button">Pumi</button>
+        </form>
+    </div>
+
+    <!-- Résultats -->
+    <section class="results-container">
+        {% if request.args.get('query') or request.args.get('Secteur') %}
+            {% if results %}
+                <div class="card-container">
+                    {% for row in results %}
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>{{ row['Code'] }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <p><span class="highlight">Plaque:</span> {{ row['Plaque'] }}</p>
+                                <p><span class="highlight">Dernière Connexion:</span> {{ row['Derniere_co'] }}</p>
+                                <p><span class="highlight">Dernière Géolocalisation:</span> {{ row['Derniere_geo'] }}</p>
+                                <p><span class="highlight">Adresse:</span> {{ row['Adresse'] }}</p>
+                                <p><span class="highlight">Ville:</span> {{ row['Ville'] }}</p>
+                                <p><span class="highlight">Code Postal:</span> {{ row['Code_Postale'] }}</p>
+                                <p><span class="highlight">Secteur:</span> {{ row['Secteur'] }}</p>
+                            </div>
+                            <div class="footer">
+                                <a href="https://www.google.com/maps/search/?q={{ row['Adresse'] }},{{ row['Ville'] }}" target="_blank" class="map-button">Voir sur la carte</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Aucun résultat trouvé.</p>
+            {% endif %}
+        {% endif %}
+    </section>
+
+    <!-- Heure en bas à droite -->
+    <div id="current-time" class="current-time"></div>
+</body>
+</html>
+
